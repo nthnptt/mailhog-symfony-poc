@@ -1,0 +1,34 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: docker
+      dockerfile: ./nginx/Dockerfile
+    volumes:
+      - .:/var/www/symfony/
+    ports:
+      - "80:80"
+    networks:
+      - net
+    depends_on:
+      - php
+  php:
+    build:
+      context: docker
+      dockerfile: ./php/Dockerfile
+    volumes:
+      - .:/var/www/symfony/
+    networks:
+      - net
+    depends_on:
+      - db
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: passwd 
+    networks:
+      - net
+
+networks:
+  net:
