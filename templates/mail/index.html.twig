@@ -3,8 +3,13 @@
 {% block body %}
     <form method="post" action="{{ path('mail.send') }}">
         <div>
-            <label for="mail">Mail :
-                <input type="email" name="mail">
+            <label for="to">Mail :
+                <input type="email" name="to">
+            </label>
+        </div>
+        <div>
+            <label for="subject">Subject :
+                <input type="text" name="subject">
             </label>
         </div>
        <div>
