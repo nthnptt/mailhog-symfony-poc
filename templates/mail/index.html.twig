@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <form method="post" action="{{ path('mail.send') }}">
+        <div>
+            <label for="mail">Mail :
+                <input type="email" name="mail">
+            </label>
+        </div>
+       <div>
+           <label for="content">Content :
+               <textarea name="content"></textarea>
+           </label>
+       </div>
+        <input type="submit">
+    </form>
+{% endblock %}
