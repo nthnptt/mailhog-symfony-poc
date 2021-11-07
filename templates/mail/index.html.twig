@@ -1,22 +1,41 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <form method="post" action="{{ path('mail.send') }}">
+    <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
         <div>
-            <label for="to">Mail :
-                <input type="email" name="to">
-            </label>
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+               Email sender
+            </h2>
         </div>
-        <div>
-            <label for="subject">Subject :
-                <input type="text" name="subject">
-            </label>
+
+        <div class="rounded bg-white max-w-md rounded overflow-hidden shadow-xl p-5">
+
+            <form class="space-y-4" action="{{ path('mail.send') }}" method="POST">
+                <div class="rounded-md shadow-sm -space-y-px">
+                    <div class="grid gap-6">
+                        <div class="col-span-12">
+                            <label for="to" class="block font-medium text-gray-700">Email</label>
+                            <input placeholder="email" type="email" name="to" id="to" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm border-gray-300 rounded-md">
+                        </div>
+                        <div class="col-span-12">
+                            <label for="subject" class="block font-medium text-gray-700">Subject</label>
+                            <input placeholder="subject" type="text" name="subject" id="subject" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm border-gray-300 rounded-md">
+                        </div>
+                        <div class="col-span-12">
+                            <label for="content" class="block font-medium text-gray-700">Content</label>
+                            <textarea placeholder="content" name="content" id="content" rows="7" class=" mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm border-gray-300 rounded-md"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                       Send !
+                    </button>
+                </div>
+            </form>
         </div>
-       <div>
-           <label for="content">Content :
-               <textarea name="content"></textarea>
-           </label>
-       </div>
-        <input type="submit">
-    </form>
+    </div>
+
 {% endblock %}
